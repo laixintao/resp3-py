@@ -1,4 +1,6 @@
-__version__ = "0.1.0"
+"""
+The original connection code is stolen from redis-py.
+"""
 
 from time import time
 import errno
@@ -439,7 +441,7 @@ class Connection(object):
                 # TCP_KEEPALIVE
                 if self.socket_keepalive:
                     sock.setsockopt(socket.SOL_SOCKET, socket.SO_KEEPALIVE, 1)
-                    for k, v in iteritems(self.socket_keepalive_options):
+                    for k, v in self.socket_keepalive_options.items():
                         sock.setsockopt(socket.IPPROTO_TCP, k, v)
 
                 # set the socket_connect_timeout before we connect
